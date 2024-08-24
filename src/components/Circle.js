@@ -12,26 +12,15 @@ const Circle = ({x, y, updateCircle, id, setCurrentCircle, currentCircle, window
   }, [windowOffset, resizeOffset])
 
   const handleDrag = (e) => {
-    e.target.style.cursor = 'grab';
     const scrollTop = window.scrollY;
     const scrollLeft = window.scrollX;
     const newX = e.clientX - 10 + scrollLeft;
     const newY = e.clientY - 10 + scrollTop;
-    /* setPosition({ x: newX, y: newY }); */
+    
     updateCircle(currentCircle, newX, newY);
     setCurrentCircle(id)
   };
-
-  
-  
-  const updatePosition = () => {
-    //console.log(x, windowOffset.left, (x - windowOffset.left + 10) - 300, (window.innerWidth / 2) - windowOffset.left)
-    /* x = x + windowOffset.left
-    setPosition({ x: x, y: y }); */
-    //console.log(windowOffset, position)
-  }
-  window.addEventListener('resize', updatePosition);
-  //console.log(windowOffset, position, x)
+ 
   return (
       <img 
         draggable="true"

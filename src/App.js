@@ -21,7 +21,7 @@ const App = () => {
   const [resizeOffset, setResizeOffset] = useState({ top: 0, left: 0 });
 
   useEffect(() => {
-    updatePosition(); // Get initial windowOffset
+    updatePosition();
     window.addEventListener('resize', updatePosition);
     window.addEventListener('scroll', updatePosition);
 
@@ -59,7 +59,6 @@ const App = () => {
       setCircles(newCircles);
       setCurrentCircle(circles.length);
     }
-      //setCurrentCircle(prevCircle => prevCircle.slice(1))
   };
   
   const updateCircle = (index, x, y) => {
@@ -133,8 +132,6 @@ const App = () => {
     });
   }
 
-  /* console.log(windowOffset) */
-
   return (
     <div className="app">
       <ImageSection image={image} forUseRef={elementRef} fade={fade} />
@@ -149,44 +146,3 @@ const App = () => {
 }
 
 export default App
-
-/* import React, { useState } from 'react';
-import ImageSection from './components/ImageSection';
-import InputSection from './components/InputSection';
-import MaterialSelection from './components/MaterialSelection';
-
-function App() {
-  const [circles, setCircles] = useState([]);
-  const [material, setMaterial] = useState(null);
-
-  const addCircle = (x, y) => {
-    setCircles([...circles, { x, y }]);
-  };
-
-  const updateCircle = (index, x, y) => {
-    const newCircles = [...circles];
-    newCircles[index] = { x, y };
-    setCircles(newCircles);
-  };
-
-  const handleMaterialSelect = (material) => {
-    setMaterial(material);
-  };
-
-  const handleSubmit = () => {
-    console.log('Circles:', circles);
-    console.log('Selected Material:', material);
-  };
-
-  return (
-    <div className="App">
-      <h1>Apple-Inspired Design Task</h1>
-      <ImageSection circles={circles} updateCircle={updateCircle} />
-      <InputSection addCircle={addCircle} />
-      <MaterialSelection selectMaterial={handleMaterialSelect} />
-      <button onClick={handleSubmit}>Submit</button>
-    </div>
-  );
-}
-
-export default App; */
