@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 const MaterialSelection = ({ selectMaterial, materials, material }) => {
-  const [selectedMaterial, setSelectedMaterial] = useState('Asiatische Radfahrerin');
+  const [selectedMaterial, setSelectedMaterial] = useState('');
 
   const handleSelect = (material) => {
     setSelectedMaterial(material);
@@ -9,23 +9,19 @@ const MaterialSelection = ({ selectMaterial, materials, material }) => {
   };
 
   return (
-    <div>
-      MaterialSelection
-
-      {materials.map((material, index) => (
-        <div
-          key={index}
-          onClick={() => handleSelect(material.name)}
-          style={{
-            padding: '10px',
-            margin: '5px',
-            border: selectedMaterial === material.name ? '2px solid blue' : '1px solid gray',
-            cursor: 'pointer',
-          }}
-        >
-          {material.name}
-        </div>
-      ))}
+    <div className='coordinate-section'>
+      <span className='text-primary'>Material.</span> <span className='text-secondary'>Choose a material</span>
+      <div className='materials'>
+        {materials.map((material, index) => (
+          <div
+            key={index}
+            className={`material-selector ${selectedMaterial === material.name && 'selected'}`}
+            onClick={() => handleSelect(material.name)}
+          >
+            {material.name}
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

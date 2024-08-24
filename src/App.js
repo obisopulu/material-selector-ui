@@ -38,10 +38,10 @@ const App = () => {
     name: 'Brettspiele Schwarz-weiss',
     image: 'https://rueckwand24.com/cdn/shop/files/Wandbild-Wandbild-Brettspiele---Schwarz-weiss-WB-001359-Slide-1_x800.jpg?v=1695309927',
   }, {
-    name: 'Bunte Antike Kunstobjekte Illustrationen',
+    name: 'Bunte Antike Kunstobjekte',
     image: 'https://rueckwand24.com/cdn/shop/files/Wandbild-Wandbild-Bunte-Antike-Kunstobjekte-Illustrationen-WB-003657-Slide-8_x800.jpg?v=1711642569',
   }, {
-    name: 'Vogelperspektive in Kappadokien Tuerkei',
+    name: 'Vogelperspektive',
     image: 'https://rueckwand24.com/cdn/shop/files/Wandbild-Wandbild-Vogelperspektive-in-Kappadokien---Tuerkei--WB-000920-Slide-1_x800.jpg?v=1695295794',
   }, {
     name: 'Haus in den Wolken',
@@ -137,8 +137,9 @@ const App = () => {
       <ImageSection image={image} forUseRef={elementRef} fade={fade} />
       <div className="customization-section">
         <CoordinatesInput circles={circles} addCircle={addCircle} updateCircle={updateCircle} currentCircle={currentCircle} />
+        <button onClick={addCircle}>Add circle</button>
         <MaterialSelection selectMaterial={handleMaterialSelect} materials={materials} material={material} />
-        <button onClick={hanndlePrintOut}>Add circle</button>
+        <button onClick={hanndlePrintOut}>Console log data</button>
       </div>
       <Circles circles={circles} updateCircle={updateCircle} setCurrentCircle={handlesetCurrentCircle} currentCircle={currentCircle} windowOffset={windowOffset} resizeOffset={resizeOffset} />
     </div>
