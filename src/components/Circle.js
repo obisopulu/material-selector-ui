@@ -5,8 +5,8 @@ import circle from '../assets/circle.svg'
 const Circle = ({x, y, updateCircle, id, setCurrentCircle, currentCircle, windowOffset, resizeOffset }) => {
   const [xOffset, setXOffset] = useState(0);
   
-  console.log(resizeOffset.x, windowOffset.x, (resizeOffset.x - windowOffset.x) * - 1)
-
+/*   console.log(resizeOffset.x, windowOffset.x, (resizeOffset.x - windowOffset.x) * - 1)
+ */
   useEffect(() => {
       setXOffset(resizeOffset.x - windowOffset.x);
   }, [windowOffset, resizeOffset])

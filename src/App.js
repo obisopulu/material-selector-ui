@@ -63,13 +63,22 @@ const App = () => {
   };
   
   const updateCircle = (index, x, y) => {
+    let Collision = false;
     const newCircles = [...circles];
     y < windowOffset.y && (y = windowOffset.y);
     y > windowOffset.y + 400 && (y = windowOffset.y + 400 - 20);
     x < windowOffset.x && (x = windowOffset.x);
     x > windowOffset.x + 600 && (x = windowOffset.x + 600 - 20);
 
-    newCircles[index] = { x: x, y: y };
+    circles.forEach((circle, index) => {
+      if (index !== currentCircle) {
+        if(y < circle.y + 20 && y > circle.y - 20 && x < circle.x + 20 && x > circle.x - 20) {
+          Collision = true;
+        }
+      }
+    })
+
+    newCircles[index] = !Collision ? { x: x, y: y } : circles[currentCircle];
     setCircles(newCircles);
   };
 
@@ -109,7 +118,7 @@ const App = () => {
     circles.forEach((circle, index) => {
       const percentageX = (circle.x / window.innerWidth) * 100;
       const percentageY = (circle.y / window.innerHeight) * 100;
-      console.log(circle.y, window.innerHeight)
+      
       const scrollTop = window.scrollY;
       const scrollLeft = window.scrollX;
 
