@@ -11,7 +11,7 @@ const App = () => {
   const elementRef = useRef(null);
 
   const [circles, setCircles] = useState([]);
-  const [currentCircle, setCurrentCircle] = useState(0);
+  const [currentCircle, setCurrentCircle] = useState(null);
   const [material, setMaterial] = useState('');
   const [image, setImage] = useState(null);
   const [windowOffset, SetWindowOffset] = useState({ y: 0, x: 0 });
@@ -19,6 +19,9 @@ const App = () => {
   const [fade, setFade] = useState(false);
 
   const [resizeOffset, setResizeOffset] = useState({ top: 0, left: 0 });
+
+  const [currentValueX, setCurrentValueX] = useState(0);
+  const [currentValueY, setCurrentValueY] = useState(0);
 
   useEffect(() => {
     updatePosition();
@@ -59,6 +62,8 @@ const App = () => {
       setCircles(newCircles);
       setCurrentCircle(circles.length);
     }
+    setCurrentValueY(windowOffset.y + 200 - 10);
+    setCurrentValueX(windowOffset.x + 300 - 10);
   };
   
   const updateCircle = (index, x, y) => {
@@ -76,7 +81,8 @@ const App = () => {
         }
       }
     })
-
+    setCurrentValueY(y);
+    setCurrentValueX(x);
     newCircles[index] = !Collision ? { x: x, y: y } : circles[currentCircle];
     setCircles(newCircles);
   };
@@ -136,7 +142,8 @@ const App = () => {
     <div className="app">
       <ImageSection image={image} forUseRef={elementRef} fade={fade} />
       <div className="customization-section">
-        <CoordinatesInput circles={circles} addCircle={addCircle} updateCircle={updateCircle} currentCircle={currentCircle} />
+        <CoordinatesInput circles={circles} addCircle={addCircle} updateCircle={updateCircle} currentCircle={currentCircle} currentValueX={currentValueX} currentValueY={currentValueY} setCurrentValueX={setCurrentValueX} setCurrentValueY={setCurrentValueY} />
+        {/* <div className="hint"></div> */}
         <button onClick={addCircle}>Add circle</button>
         <MaterialSelection selectMaterial={handleMaterialSelect} materials={materials} material={material} />
         <button onClick={hanndlePrintOut}>Console log data</button>

@@ -12,13 +12,13 @@ const Circle = ({x, y, updateCircle, id, setCurrentCircle, currentCircle, window
   }, [windowOffset, resizeOffset])
 
   const handleDrag = (e) => {
+    setCurrentCircle(id)
     const scrollTop = window.scrollY;
     const scrollLeft = window.scrollX;
     const newX = e.clientX - 10 + scrollLeft;
     const newY = e.clientY - 10 + scrollTop;
     
     updateCircle(currentCircle, newX, newY);
-    setCurrentCircle(id)
   };
  
   return (

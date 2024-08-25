@@ -1,29 +1,51 @@
-const CoordinatesInput = ({ circles, updateCircle, currentCircle }) => {
+const CoordinatesInput = ({ circles, updateCircle, currentCircle, currentValueX, currentValueY, setCurrentValueX, setCurrentValueY }) => {
+
+/*   useEffect(() => {
+    updateCircle(currentCircle, currentValueX, currentValueY);
+  }, [currentCircle, currentValueX, currentValueY]); */
 
   const handleInputX = (e) => {
-    updateCircle(currentCircle, Number(e.target.value), circles[currentCircle].y);
+    updateCircle(currentCircle, currentValueX, circles[currentCircle].y)
   };
 
   const handleInputY = (e) => {
-    updateCircle(currentCircle, circles[currentCircle].x, Number(e.target.value));
+    updateCircle(currentCircle, circles[currentCircle].x, currentValueY);
+  };
+
+  const handleOnChangeX = (e) => {
+    setCurrentValueX(Number(e.target.value))
+  };
+
+  const handleOnChangeY = (e) => {
+    setCurrentValueY(Number(e.target.value))
   };
 
   return (
     <div className='coordinate-section'>
-      <span className='text-primary'>Circle name</span>
+      <span className='text-primary'>Circle:</span>
+      <span className='text-secondary'>{circles.length ? currentCircle + 1 : ' Add a Circle'}</span>
 
       <div className='coordinates'>
         <div className='coordinate-inputs'>
           <div className='coordinate-label'>
-            <span className='text-primary'>X</span><span className='text-secondary'> -coordinate</span>
-          </div>            
-          <input type="number" value={circles[currentCircle]?.x || 0} className='coordinate-input' onInput={handleInputX}  />
+            <div>
+              <span className='text-primary'>X</span><span className='text-secondary'> -coordinate</span>
+            </div>
+            <input type="number" disabled={currentCircle === null} value={currentValueX} className='coordinate-input' onBlur={handleInputX} onInput={handleOnChangeX} onKeyDown={(e) => e.key === 'Enter' && handleInputX(e)} />
+          </div> 
+          <div className='text-secondary-2'>
+            Set values to set the selected horizontally
+          </div>           
         </div>
         <div className='coordinate-inputs'>
           <div className='coordinate-label'>
-            <span className='text-primary'>Y</span><span className='text-secondary'> -coordinate</span>
-          </div>
-          <input type="number" value={circles[currentCircle]?.y || 0} className='coordinate-input' onInput={handleInputY}  />
+            <div>
+              <span className='text-primary'>Y</span><span className='text-secondary'> -coordinate</span>
+            </div>
+            <input type="number" disabled={currentCircle === null} value={currentValueY} className='coordinate-input' onBlur={handleInputY} onInput={handleOnChangeY} onKeyDown={(e) => e.key === 'Enter' && handleInputY(e)} />          </div> 
+          <div className='text-secondary-2'>
+            Set values to set the selected vertically
+          </div>           
         </div>
       </div>
 
