@@ -101,6 +101,8 @@ const App = () => {
 
   const handlesetCurrentCircle = ( index ) => {
     setCurrentCircle(index)
+    setCurrentValueY(windowOffset.y + 200 - 10);
+    setCurrentValueX(windowOffset.x + 300 - 10);
   };
 
   const updatePosition = () => {

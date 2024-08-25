@@ -22,7 +22,7 @@ const CoordinatesInput = ({ circles, updateCircle, currentCircle, currentValueX,
 
   return (
     <div className='coordinate-section'>
-      <span className='text-primary'>Circle:</span>
+      <span className='text-primary'>Circle.</span>
       <span className='text-secondary'>{circles.length ? currentCircle + 1 : ' Add a Circle'}</span>
 
       <div className='coordinates'>
