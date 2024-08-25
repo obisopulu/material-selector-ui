@@ -6,7 +6,7 @@ function ImageSection({ image, forUseRef, fade }) {
     e.preventDefault();
   }
   return (
-      <div ref={forUseRef} className={`image-section ${fade ? 'fade-out' : 'fade-in'}`} onDragOver={handleDrag} >
+      <div ref={forUseRef} className={`image-section ${fade ? 'fade-out' : 'fade-in'}`} onDragOver={handleDrag} draggable={false} >
         <Image source={image} /> 
       </div>
   );

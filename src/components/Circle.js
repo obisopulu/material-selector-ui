@@ -26,9 +26,10 @@ const Circle = ({x, y, updateCircle, id, setCurrentCircle, currentCircle, window
         draggable="true"
         onDragEnd={handleDrag}
         onDrag={handleDrag}
+        title={"Circle " + (id + 1)}
         onClick={()=> setCurrentCircle(id)}
         src={circle}
-        alt="circle"
+        alt={"Circle " + (id + 1)}
         className={`circle ${currentCircle === id && 'circle-active m-2'}`}
         style={{top: y, left: x - xOffset, cursor: 'pointer'}}
       />

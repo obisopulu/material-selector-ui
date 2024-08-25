@@ -19,9 +19,10 @@ const MaterialSelection = ({ selectMaterial, materials, material }) => {
             onClick={() => handleSelect(material.name)}
           >
             {material.name}
-            <div className='text-primary-2'>
-              Infromation about the image
+            <div className='text-primary-2' style={{textAlign: 'left', padding: '5px 0'}}>
+              {material.info}
             </div>
+            <div className='material-selector-image' style={{backgroundImage: `url(${material.image})`}}></div>
           </div>
         ))}
       </div>

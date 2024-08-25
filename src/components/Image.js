@@ -5,7 +5,7 @@ function Image({ source }) {
     e.preventDefault();
   }
   return (
-    source && <img src={source} alt="Example" className='image' onDragOver={handleDrop} />
+    source && <img src={source} alt="Example" className='image' onDragOver={handleDrop} draggable={false}  />
   );
 }
 

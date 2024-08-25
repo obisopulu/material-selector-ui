@@ -35,20 +35,25 @@ const App = () => {
   }, []);
   
   const materials = [{
-    name: 'Asiatische Radfahrerin',
-    image: 'https://rueckwand24.com/cdn/shop/files/Wandbild-Wandbild-Asiatische-Radfahrerin-WB-000122-Slide-1_x800.jpg?v=1695219891',
+    name: 'Aldeyarfoss',
+    image: 'https://rueckwand24.com/cdn/shop/files/Wandbild-Wandbild-Aldeyarfoss-WB-000580-HB.jpg?v=1695247714&width=660',
+    info: 'Himmel',
   }, {
-    name: 'Brettspiele Schwarz-weiss',
-    image: 'https://rueckwand24.com/cdn/shop/files/Wandbild-Wandbild-Brettspiele---Schwarz-weiss-WB-001359-Slide-1_x800.jpg?v=1695309927',
+    name: 'Momoyogusa Berge',
+    image: 'https://rueckwand24.com/cdn/shop/files/Wandbild-Wandbild-Momoyogusa-Berge---Abstrak-WB-001036-HB.jpg?v=1695299587&width=660',
+    info: 'Banksy',
   }, {
-    name: 'Bunte Antike Kunstobjekte',
-    image: 'https://rueckwand24.com/cdn/shop/files/Wandbild-Wandbild-Bunte-Antike-Kunstobjekte-Illustrationen-WB-003657-Slide-8_x800.jpg?v=1711642569',
+    name: 'Stadtbild - Paris, Frankreich',
+    image: 'https://rueckwand24.com/cdn/shop/files/Wandbild-Wandbild-Stadtbild---Paris_-Frankreich-WB-000970-HB.jpg?v=1695297521&width=660',
+    info: 'Architektur',
   }, {
-    name: 'Vogelperspektive',
-    image: 'https://rueckwand24.com/cdn/shop/files/Wandbild-Wandbild-Vogelperspektive-in-Kappadokien---Tuerkei--WB-000920-Slide-1_x800.jpg?v=1695295794',
+    name: 'Mountainbiker auf Waldweg',
+    image: 'https://rueckwand24.com/cdn/shop/files/Wandbild-Wandbild-Mountainbiker-auf-Waldweg-WB-002917-HB.jpg?v=1695411211&width=660',
+    info: 'Sport',
   }, {
-    name: 'Haus in den Wolken',
-    image: 'https://rueckwand24.com/cdn/shop/files/Wandbild-Wandbild-Haus-in-den-Wolken-WB-000576-Slide-1_x800.jpg?v=1695247523',
+    name: 'kraftvolle Steine im Teich',
+    image: 'https://rueckwand24.com/cdn/shop/files/Wandbild-Wandbild-kraftvolle-Steine-im-Teich-WB-003050-HB.jpg?v=1695415931&width=660',
+    info: 'Zen & Steine',
   }];
 
   const addCircle = () => {
@@ -83,7 +88,12 @@ const App = () => {
     })
     setCurrentValueY(y);
     setCurrentValueX(x);
-    newCircles[index] = !Collision ? { x: x, y: y } : circles[currentCircle];
+    if(Collision){
+      newCircles[index] = circles[currentCircle]
+    } else {
+      newCircles[index] = { x: x, y: y }
+    }
+    ;
     setCircles(newCircles);
   };
 
